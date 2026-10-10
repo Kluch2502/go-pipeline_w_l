@@ -1,13 +1,32 @@
 package main
 
 import (
-	"fmt"
-	"strconv"
-	"strings"
+    "bufio"
+    "fmt"
+    "os"
+    "strconv"
+    "strings"
 )
 
 func main() {
-	fmt.Println(Calc(" 435 + 455 / (34 + 4)"))
+    
+	fmt.Print("Введите выражение: ")
+
+    reader := bufio.NewReader(os.Stdin)
+    expression, err := reader.ReadString('\n')
+    if err != nil && len(expression) == 0 {
+        fmt.Println("Не удалось прочитать ввод:", err)
+        return
+    }
+
+    result, err := Calc(strings.TrimSpace(expression))
+    if err != nil {
+        fmt.Println("Ошибка:", err)
+        return
+    }
+
+    fmt.Println("Результат:", result)
+	
 }
 
 func Calc(expression string) (float64, error) {
