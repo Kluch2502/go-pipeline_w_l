@@ -15,16 +15,18 @@ func main() {
     reader := bufio.NewReader(os.Stdin)
     expression, err := reader.ReadString('\n')
     if err != nil && len(expression) == 0 {
-        fmt.Println("Не удалось прочитать ввод:", err)
+        fmt.Println("Ошибка чтения:", err)
         return
     }
 
-    result, err := Calc(strings.TrimSpace(expression))
-    if err != nil {
-        fmt.Println("Ошибка:", err)
+    expression = strings.TrimSpace(expression)
+
+    if err := isMistake(expression); err != nil {
+        fmt.Println("Некорректное выражение:", err)
         return
     }
 
+    result := Calculation(expression)
     fmt.Println("Результат:", result)
 	
 }
