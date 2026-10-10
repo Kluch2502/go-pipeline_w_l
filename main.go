@@ -90,7 +90,6 @@ func Calculation(expression string) float64 {
 		if isNum(outstack[i]) {
 			num, _ := strconv.ParseFloat(k, 64)
 			operandStack = append(operandStack, num)
-			fmt.Println(operandStack)
 		}
 		if isOperator(outstack[i]) {
 			num1 := operandStack[len(operandStack)-1]
