@@ -13,3 +13,9 @@ jobs:
           go-version: '1.23'
       - name: Build application
         run: go build -o calculator.exe .
+      - name: Verify build output
+        run: |
+          if (!(Test-Path "calculator.exe")) {
+            throw "calculator.exe was not created"
+          }
+          Write-Host "Build artifact exists"
