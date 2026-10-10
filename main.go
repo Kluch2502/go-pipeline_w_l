@@ -47,7 +47,6 @@ func Calculation(expression string) float64 {
 	var opstack []string
 	var outstack []string
 	sliseofTokens := stringtoTokens(expression)
-	fmt.Println(sliseofTokens)
 	for _, k := range sliseofTokens {
 		if isNum(k) {
 			outstack = append(outstack, k)
@@ -81,8 +80,6 @@ func Calculation(expression string) float64 {
 		outstack = append(outstack, opstack[len(opstack)-1])
 		opstack = opstack[:len(opstack)-1]
 	}
-	fmt.Println(opstack)
-	fmt.Println(outstack)
 
 	var operandStack []float64
 
